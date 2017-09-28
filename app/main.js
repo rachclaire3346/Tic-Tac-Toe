@@ -22,7 +22,7 @@ function startGame() {
 	//remove winner notification
 
 	//clear board and add click event on squares
-	for (i = 0; i < spaces.length; i++) {
+	for (var i = 0; i < spaces.length; i++) {
 		spaces[i].innerHTML = '';
 		spaces[i].addEventListener("click", takeSpace);
 	}
@@ -31,8 +31,36 @@ function startGame() {
 
 function takeSpace() {
 
+
+
 	turn++;
 	this.innerHTML = symbols[turn % 2];
 	this.removeEventListener("click", takeSpace);
 
+	for (var i = 0; i < wins.length; i++) {
+		if (checkForWin(wins[i])) {
+			alert("Winner, Winner!");
+		}
+	}
+
 }
+
+function checkForWin(winArray) {
+ 
+	return spaces[winArray[0]] !== '' &&
+		spaces[winArray[0]] === spaces[winArray[1]] &&
+		spaces[winArray[0]] === spaces[winArray[2]];
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
